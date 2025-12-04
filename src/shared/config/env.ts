@@ -12,7 +12,10 @@ const parseEnv = () => {
   });
 
   if (!parsed.success) {
-    console.error("❌ Invalid environment variables:", parsed.error.flatten().fieldErrors);
+    console.error(
+      "❌ Invalid environment variables:",
+      parsed.error.flatten().fieldErrors
+    );
     throw new Error("Invalid environment variables");
   }
 

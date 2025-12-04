@@ -4,18 +4,18 @@ Collaborative flow-chart editor with real-time collaboration.
 
 ## Tech Stack
 
-| Category | Technology |
-|----------|------------|
-| Framework | Next.js 14 (App Router) |
-| Language | TypeScript |
-| Server State | React Query |
-| Client State | Zustand |
-| Styling | Tailwind CSS |
-| UI Components | Radix UI |
-| Real-time | STOMP (WebSocket) |
-| Form | React Hook Form + Zod |
-| Testing | Vitest + React Testing Library |
-| Documentation | Storybook |
+| Category      | Technology                     |
+| ------------- | ------------------------------ |
+| Framework     | Next.js 14 (App Router)        |
+| Language      | TypeScript                     |
+| Server State  | React Query                    |
+| Client State  | Zustand                        |
+| Styling       | Tailwind CSS                   |
+| UI Components | Radix UI                       |
+| Real-time     | STOMP (WebSocket)              |
+| Form          | React Hook Form + Zod          |
+| Testing       | Vitest + React Testing Library |
+| Documentation | Storybook                      |
 
 ## Getting Started
 
@@ -57,14 +57,14 @@ app → pages → widgets → features → entities → shared
 
 ### Layer 설명
 
-| Layer | 역할 | 예시 |
-|-------|------|------|
-| `app` | 앱 전역 설정, 라우팅, 프로바이더 | `providers/`, `layout.tsx` |
-| `pages` | 라우트와 매칭되는 페이지 | `auth/`, `flow-chart/` |
-| `widgets` | features/entities 조합 UI 블록 | `header/`, `flow-canvas/` |
-| `features` | 사용자 액션 | `login/`, `create-node/` |
-| `entities` | 비즈니스 도메인 객체 | `user/`, `node/`, `memo/` |
-| `shared` | 공용 코드 | `ui/`, `api/`, `lib/` |
+| Layer      | 역할                             | 예시                       |
+| ---------- | -------------------------------- | -------------------------- |
+| `app`      | 앱 전역 설정, 라우팅, 프로바이더 | `providers/`, `layout.tsx` |
+| `pages`    | 라우트와 매칭되는 페이지         | `auth/`, `flow-chart/`     |
+| `widgets`  | features/entities 조합 UI 블록   | `header/`, `flow-canvas/`  |
+| `features` | 사용자 액션                      | `login/`, `create-node/`   |
+| `entities` | 비즈니스 도메인 객체             | `user/`, `node/`, `memo/`  |
+| `shared`   | 공용 코드                        | `ui/`, `api/`, `lib/`      |
 
 ### Slice 내부 구조
 
@@ -78,17 +78,17 @@ feature-name/
 
 ## Scripts
 
-| Script | Description |
-|--------|-------------|
-| `bun dev` | 개발 서버 실행 |
-| `bun build` | 프로덕션 빌드 |
-| `bun test` | 테스트 실행 |
-| `bun test:ui` | Vitest UI 실행 |
-| `bun test:coverage` | 커버리지 리포트 |
-| `bun storybook` | 스토리북 실행 |
-| `bun lint` | ESLint 검사 |
-| `bun format` | Prettier 포맷팅 |
-| `bun typecheck` | TypeScript 타입 검사 |
+| Script              | Description          |
+| ------------------- | -------------------- |
+| `bun dev`           | 개발 서버 실행       |
+| `bun build`         | 프로덕션 빌드        |
+| `bun test`          | 테스트 실행          |
+| `bun test:ui`       | Vitest UI 실행       |
+| `bun test:coverage` | 커버리지 리포트      |
+| `bun storybook`     | 스토리북 실행        |
+| `bun lint`          | ESLint 검사          |
+| `bun format`        | Prettier 포맷팅      |
+| `bun typecheck`     | TypeScript 타입 검사 |
 
 ## Path Aliases
 
@@ -98,15 +98,15 @@ import { useLogin } from "@features/auth";
 import { UserAvatar } from "@entities/user";
 ```
 
-| Alias | Path |
-|-------|------|
-| `@/*` | `src/*` |
-| `@app/*` | `src/app/*` |
-| `@pages/*` | `src/pages/*` |
-| `@widgets/*` | `src/widgets/*` |
+| Alias         | Path             |
+| ------------- | ---------------- |
+| `@/*`         | `src/*`          |
+| `@app/*`      | `src/app/*`      |
+| `@pages/*`    | `src/pages/*`    |
+| `@widgets/*`  | `src/widgets/*`  |
 | `@features/*` | `src/features/*` |
 | `@entities/*` | `src/entities/*` |
-| `@shared/*` | `src/shared/*` |
+| `@shared/*`   | `src/shared/*`   |
 
 ## ESLint Rules
 
