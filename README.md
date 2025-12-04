@@ -6,18 +6,18 @@ A production-ready Next.js 16 boilerplate with React 19, TypeScript, and Feature
 
 ## Tech Stack
 
-| Category | Technologies |
-|----------|-------------|
-| **Framework** | Next.js 16, React 19 |
-| **Language** | TypeScript 5.7 |
-| **Styling** | Tailwind CSS 4, CVA |
+| Category             | Technologies                |
+| -------------------- | --------------------------- |
+| **Framework**        | Next.js 16, React 19        |
+| **Language**         | TypeScript 5.7              |
+| **Styling**          | Tailwind CSS 4, CVA         |
 | **State Management** | Zustand 5, TanStack Query 5 |
-| **Forms** | React Hook Form, Zod |
-| **UI Components** | Radix UI |
-| **Testing** | Vitest, Testing Library |
-| **Documentation** | Storybook 10 |
-| **Code Quality** | ESLint 9, Prettier |
-| **Real-time** | STOMP.js (WebSocket) |
+| **Forms**            | React Hook Form, Zod        |
+| **UI Components**    | Radix UI                    |
+| **Testing**          | Vitest, Testing Library     |
+| **Documentation**    | Storybook 10                |
+| **Code Quality**     | ESLint 9, Prettier          |
+| **Real-time**        | STOMP.js (WebSocket)        |
 
 ## Project Structure
 
@@ -70,22 +70,22 @@ NEXT_PUBLIC_WS_URL=ws://localhost:8080/ws
 
 ## Available Scripts
 
-| Command | Description |
-|---------|-------------|
-| `bun dev` | Start dev server with Turbopack |
-| `bun run build` | Create production build |
-| `bun start` | Start production server |
-| `bun lint` | Run ESLint |
-| `bun lint:fix` | Run ESLint with auto-fix |
-| `bun format` | Format code with Prettier |
-| `bun format:check` | Check code formatting |
-| `bun run test` | Run tests with Vitest (watch mode) |
-| `bun run test:run` | Run tests once (for CI) |
-| `bun run test:ui` | Run tests with UI |
-| `bun run test:coverage` | Run tests with coverage |
-| `bun storybook` | Start Storybook dev server |
-| `bun build-storybook` | Build Storybook for deployment |
-| `bun typecheck` | Run TypeScript type checking |
+| Command                 | Description                        |
+| ----------------------- | ---------------------------------- |
+| `bun dev`               | Start dev server with Turbopack    |
+| `bun run build`         | Create production build            |
+| `bun start`             | Start production server            |
+| `bun lint`              | Run ESLint                         |
+| `bun lint:fix`          | Run ESLint with auto-fix           |
+| `bun format`            | Format code with Prettier          |
+| `bun format:check`      | Check code formatting              |
+| `bun run test`          | Run tests with Vitest (watch mode) |
+| `bun run test:run`      | Run tests once (for CI)            |
+| `bun run test:ui`       | Run tests with UI                  |
+| `bun run test:coverage` | Run tests with coverage            |
+| `bun storybook`         | Start Storybook dev server         |
+| `bun build-storybook`   | Build Storybook for deployment     |
+| `bun typecheck`         | Run TypeScript type checking       |
 
 > **Note**: Use `bun run test` instead of `bun test`. The latter uses Bun's built-in test runner, which doesn't use the Vitest configuration.
 
@@ -96,13 +96,13 @@ NEXT_PUBLIC_WS_URL=ws://localhost:8080/ws
 A lightweight, type-safe HTTP client with automatic error handling:
 
 ```typescript
-import { api } from '@shared/api';
+import { api } from "@shared/api";
 
 // GET request
-const users = await api.get<User[]>('/users');
+const users = await api.get<User[]>("/users");
 
 // POST request
-const newUser = await api.post<User>('/users', { name: 'John' });
+const newUser = await api.post<User>("/users", { name: "John" });
 ```
 
 ### Zod Form Integration
@@ -110,8 +110,8 @@ const newUser = await api.post<User>('/users', { name: 'John' });
 Seamless form validation with React Hook Form and Zod:
 
 ```typescript
-import { useZodForm } from '@shared/lib/hooks';
-import { z } from 'zod';
+import { useZodForm } from "@shared/lib/hooks";
+import { z } from "zod";
 
 const schema = z.object({
   email: z.string().email(),
@@ -129,11 +129,11 @@ function LoginForm() {
 Accessible, customizable components built with Radix UI and CVA:
 
 ```tsx
-import { Button } from '@shared/ui';
+import { Button } from "@shared/ui";
 
 <Button variant="primary" size="lg">
   Click me
-</Button>
+</Button>;
 ```
 
 ### Path Aliases
@@ -141,9 +141,9 @@ import { Button } from '@shared/ui';
 Clean imports using TypeScript path aliases:
 
 ```typescript
-import { Button } from '@shared/ui';
-import { useZodForm } from '@shared/lib/hooks';
-import { api } from '@shared/api';
+import { Button } from "@shared/ui";
+import { useZodForm } from "@shared/lib/hooks";
+import { api } from "@shared/api";
 ```
 
 ## Development

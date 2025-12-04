@@ -6,18 +6,18 @@ React 19, TypeScript, Feature-Sliced Design 아키텍처를 적용한 프로덕�
 
 ## 기술 스택
 
-| 분류 | 기술 |
-|------|------|
-| **프레임워크** | Next.js 16, React 19 |
-| **언어** | TypeScript 5.7 |
-| **스타일링** | Tailwind CSS 4, CVA |
-| **상태 관리** | Zustand 5, TanStack Query 5 |
-| **폼** | React Hook Form, Zod |
-| **UI 컴포넌트** | Radix UI |
-| **테스팅** | Vitest, Testing Library |
-| **문서화** | Storybook 10 |
-| **코드 품질** | ESLint 9, Prettier |
-| **실시간 통신** | STOMP.js (WebSocket) |
+| 분류            | 기술                        |
+| --------------- | --------------------------- |
+| **프레임워크**  | Next.js 16, React 19        |
+| **언어**        | TypeScript 5.7              |
+| **스타일링**    | Tailwind CSS 4, CVA         |
+| **상태 관리**   | Zustand 5, TanStack Query 5 |
+| **폼**          | React Hook Form, Zod        |
+| **UI 컴포넌트** | Radix UI                    |
+| **테스팅**      | Vitest, Testing Library     |
+| **문서화**      | Storybook 10                |
+| **코드 품질**   | ESLint 9, Prettier          |
+| **실시간 통신** | STOMP.js (WebSocket)        |
 
 ## 프로젝트 구조
 
@@ -70,22 +70,22 @@ NEXT_PUBLIC_WS_URL=ws://localhost:8080/ws
 
 ## 사용 가능한 스크립트
 
-| 명령어 | 설명 |
-|--------|------|
-| `bun dev` | Turbopack으로 개발 서버 시작 |
-| `bun run build` | 프로덕션 빌드 생성 |
-| `bun start` | 프로덕션 서버 시작 |
-| `bun lint` | ESLint 실행 |
-| `bun lint:fix` | ESLint 자동 수정 실행 |
-| `bun format` | Prettier로 코드 포맷팅 |
-| `bun format:check` | 코드 포맷팅 검사 |
-| `bun run test` | Vitest로 테스트 실행 (watch 모드) |
-| `bun run test:run` | 테스트 1회 실행 (CI용) |
-| `bun run test:ui` | UI로 테스트 실행 |
-| `bun run test:coverage` | 커버리지 포함 테스트 실행 |
-| `bun storybook` | Storybook 개발 서버 시작 |
-| `bun build-storybook` | 배포용 Storybook 빌드 |
-| `bun typecheck` | TypeScript 타입 검사 실행 |
+| 명령어                  | 설명                              |
+| ----------------------- | --------------------------------- |
+| `bun dev`               | Turbopack으로 개발 서버 시작      |
+| `bun run build`         | 프로덕션 빌드 생성                |
+| `bun start`             | 프로덕션 서버 시작                |
+| `bun lint`              | ESLint 실행                       |
+| `bun lint:fix`          | ESLint 자동 수정 실행             |
+| `bun format`            | Prettier로 코드 포맷팅            |
+| `bun format:check`      | 코드 포맷팅 검사                  |
+| `bun run test`          | Vitest로 테스트 실행 (watch 모드) |
+| `bun run test:run`      | 테스트 1회 실행 (CI용)            |
+| `bun run test:ui`       | UI로 테스트 실행                  |
+| `bun run test:coverage` | 커버리지 포함 테스트 실행         |
+| `bun storybook`         | Storybook 개발 서버 시작          |
+| `bun build-storybook`   | 배포용 Storybook 빌드             |
+| `bun typecheck`         | TypeScript 타입 검사 실행         |
 
 > **참고**: `bun test` 대신 `bun run test`를 사용하세요. `bun test`는 Vitest 설정을 사용하지 않는 Bun 내장 테스트 러너를 실행합니다.
 
@@ -96,13 +96,13 @@ NEXT_PUBLIC_WS_URL=ws://localhost:8080/ws
 자동 에러 핸들링이 포함된 경량 타입 세이프 HTTP 클라이언트:
 
 ```typescript
-import { api } from '@shared/api';
+import { api } from "@shared/api";
 
 // GET 요청
-const users = await api.get<User[]>('/users');
+const users = await api.get<User[]>("/users");
 
 // POST 요청
-const newUser = await api.post<User>('/users', { name: 'John' });
+const newUser = await api.post<User>("/users", { name: "John" });
 ```
 
 ### Zod 폼 통합
@@ -110,8 +110,8 @@ const newUser = await api.post<User>('/users', { name: 'John' });
 React Hook Form과 Zod를 활용한 원활한 폼 유효성 검사:
 
 ```typescript
-import { useZodForm } from '@shared/lib/hooks';
-import { z } from 'zod';
+import { useZodForm } from "@shared/lib/hooks";
+import { z } from "zod";
 
 const schema = z.object({
   email: z.string().email(),
@@ -129,11 +129,11 @@ function LoginForm() {
 Radix UI와 CVA로 구축된 접근성 있고 커스터마이징 가능한 컴포넌트:
 
 ```tsx
-import { Button } from '@shared/ui';
+import { Button } from "@shared/ui";
 
 <Button variant="primary" size="lg">
   클릭하세요
-</Button>
+</Button>;
 ```
 
 ### 경로 별칭
@@ -141,9 +141,9 @@ import { Button } from '@shared/ui';
 TypeScript 경로 별칭을 사용한 깔끔한 import:
 
 ```typescript
-import { Button } from '@shared/ui';
-import { useZodForm } from '@shared/lib/hooks';
-import { api } from '@shared/api';
+import { Button } from "@shared/ui";
+import { useZodForm } from "@shared/lib/hooks";
+import { api } from "@shared/api";
 ```
 
 ## 개발 가이드
