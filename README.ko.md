@@ -79,12 +79,15 @@ NEXT_PUBLIC_WS_URL=ws://localhost:8080/ws
 | `bun lint:fix` | ESLint 자동 수정 실행 |
 | `bun format` | Prettier로 코드 포맷팅 |
 | `bun format:check` | 코드 포맷팅 검사 |
-| `bun test` | Vitest로 테스트 실행 |
-| `bun test:ui` | UI로 테스트 실행 |
-| `bun test:coverage` | 커버리지 포함 테스트 실행 |
+| `bun run test` | Vitest로 테스트 실행 (watch 모드) |
+| `bun run test:run` | 테스트 1회 실행 (CI용) |
+| `bun run test:ui` | UI로 테스트 실행 |
+| `bun run test:coverage` | 커버리지 포함 테스트 실행 |
 | `bun storybook` | Storybook 개발 서버 시작 |
 | `bun build-storybook` | 배포용 Storybook 빌드 |
 | `bun typecheck` | TypeScript 타입 검사 실행 |
+
+> **참고**: `bun test` 대신 `bun run test`를 사용하세요. `bun test`는 Vitest 설정을 사용하지 않는 Bun 내장 테스트 러너를 실행합니다.
 
 ## 주요 기능
 

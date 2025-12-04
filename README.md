@@ -79,12 +79,15 @@ NEXT_PUBLIC_WS_URL=ws://localhost:8080/ws
 | `bun lint:fix` | Run ESLint with auto-fix |
 | `bun format` | Format code with Prettier |
 | `bun format:check` | Check code formatting |
-| `bun test` | Run tests with Vitest |
-| `bun test:ui` | Run tests with UI |
-| `bun test:coverage` | Run tests with coverage |
+| `bun run test` | Run tests with Vitest (watch mode) |
+| `bun run test:run` | Run tests once (for CI) |
+| `bun run test:ui` | Run tests with UI |
+| `bun run test:coverage` | Run tests with coverage |
 | `bun storybook` | Start Storybook dev server |
 | `bun build-storybook` | Build Storybook for deployment |
 | `bun typecheck` | Run TypeScript type checking |
+
+> **Note**: Use `bun run test` instead of `bun test`. The latter uses Bun's built-in test runner, which doesn't use the Vitest configuration.
 
 ## Key Features
 
