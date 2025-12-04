@@ -1,0 +1,115 @@
+{
+  "extends": [
+    "next/core-web-vitals",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:import/recommended",
+    "plugin:import/typescript"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint", "import"],
+  "settings": {
+    "import/resolver": {
+      "typescript": {
+        "project": "./tsconfig.json"
+      }
+    }
+  },
+  "rules": {
+    // FSD 레이어 의존성 규칙
+    "import/no-restricted-paths": [
+      "error",
+      {
+        "zones": [
+          // shared는 다른 레이어 import 불가
+          {
+            "target": "./src/shared/**/*",
+            "from": "./src/entities/**/*",
+            "message": "shared는 entities를 import할 수 없습니다."
+          },
+          {
+            "target": "./src/shared/**/*",
+            "from": "./src/features/**/*",
+            "message": "shared는 features를 import할 수 없습니다."
+          },
+          {
+            "target": "./src/shared/**/*",
+            "from": "./src/widgets/**/*",
+            "message": "shared는 widgets를 import할 수 없습니다."
+          },
+          {
+            "target": "./src/shared/**/*",
+            "from": "./src/pages/**/*",
+            "message": "shared는 pages를 import할 수 없습니다."
+          },
+          // entities는 features 이상 import 불가
+          {
+            "target": "./src/entities/**/*",
+            "from": "./src/features/**/*",
+            "message": "entities는 features를 import할 수 없습니다."
+          },
+          {
+            "target": "./src/entities/**/*",
+            "from": "./src/widgets/**/*",
+            "message": "entities는 widgets를 import할 수 없습니다."
+          },
+          {
+            "target": "./src/entities/**/*",
+            "from": "./src/pages/**/*",
+            "message": "entities는 pages를 import할 수 없습니다."
+          },
+          // features는 widgets 이상 import 불가
+          {
+            "target": "./src/features/**/*",
+            "from": "./src/widgets/**/*",
+            "message": "features는 widgets를 import할 수 없습니다."
+          },
+          {
+            "target": "./src/features/**/*",
+            "from": "./src/pages/**/*",
+            "message": "features는 pages를 import할 수 없습니다."
+          },
+          // widgets는 pages import 불가
+          {
+            "target": "./src/widgets/**/*",
+            "from": "./src/pages/**/*",
+            "message": "widgets는 pages를 import할 수 없습니다."
+          }
+        ]
+      }
+    ],
+    "import/order": [
+      "error",
+      {
+        "groups": [
+          "builtin",
+          "external",
+          "internal",
+          ["parent", "sibling"],
+          "index",
+          "type"
+        ],
+        "pathGroups": [
+          { "pattern": "react", "group": "builtin", "position": "before" },
+          { "pattern": "next/**", "group": "builtin", "position": "before" },
+          { "pattern": "@app/**", "group": "internal", "position": "before" },
+          { "pattern": "@pages/**", "group": "internal", "position": "before" },
+          { "pattern": "@widgets/**", "group": "internal", "position": "before" },
+          { "pattern": "@features/**", "group": "internal", "position": "before" },
+          { "pattern": "@entities/**", "group": "internal", "position": "before" },
+          { "pattern": "@shared/**", "group": "internal", "position": "before" }
+        ],
+        "pathGroupsExcludedImportTypes": ["react", "next"],
+        "newlines-between": "always",
+        "alphabetize": { "order": "asc", "caseInsensitive": true }
+      }
+    ],
+    "@typescript-eslint/no-unused-vars": [
+      "warn",
+      { "argsIgnorePattern": "^_" }
+    ],
+    "@typescript-eslint/consistent-type-imports": [
+      "error",
+      { "prefer": "type-imports" }
+    ]
+  }
+}
