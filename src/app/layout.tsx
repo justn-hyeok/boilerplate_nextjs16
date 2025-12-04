@@ -6,7 +6,7 @@ import type { Metadata } from "next";
 import "./styles/globals.css";
 
 export const metadata: Metadata = {
-  title: "Jagalchi",
+  title: "boilerplate_nextjs16",
   description: "Collaborative flow-chart editor",
 };
 
