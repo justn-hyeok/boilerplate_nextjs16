@@ -1,3 +1,5 @@
+[English](./README.md)
+
 # 보일러 플레이트 Next.js 16
 
 React 19, TypeScript, Feature-Sliced Design 아키텍처를 적용한 프로덕션 레디 Next.js 16 보일러플레이트입니다.

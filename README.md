@@ -1,3 +1,5 @@
+[한국어](./README.ko.md)
+
 # Bolier plate Next.js 16
 
 A production-ready Next.js 16 boilerplate with React 19, TypeScript, and Feature-Sliced Design architecture.
