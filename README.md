@@ -1,120 +1,168 @@
-# 🐟 Jagalchi
+# Bolier plate Next.js 16
 
-Collaborative flow-chart editor with real-time collaboration.
+A production-ready Next.js 16 boilerplate with React 19, TypeScript, and Feature-Sliced Design architecture.
 
 ## Tech Stack
 
-| Category      | Technology                     |
-| ------------- | ------------------------------ |
-| Framework     | Next.js 14 (App Router)        |
-| Language      | TypeScript                     |
-| Server State  | React Query                    |
-| Client State  | Zustand                        |
-| Styling       | Tailwind CSS                   |
-| UI Components | Radix UI                       |
-| Real-time     | STOMP (WebSocket)              |
-| Form          | React Hook Form + Zod          |
-| Testing       | Vitest + React Testing Library |
-| Documentation | Storybook                      |
+| Category | Technologies |
+|----------|-------------|
+| **Framework** | Next.js 16, React 19 |
+| **Language** | TypeScript 5.7 |
+| **Styling** | Tailwind CSS 4, CVA |
+| **State Management** | Zustand 5, TanStack Query 5 |
+| **Forms** | React Hook Form, Zod |
+| **UI Components** | Radix UI |
+| **Testing** | Vitest, Testing Library |
+| **Documentation** | Storybook 10 |
+| **Code Quality** | ESLint 9, Prettier |
+| **Real-time** | STOMP.js (WebSocket) |
 
-## Getting Started
+## Project Structure
 
-```bash
-# Install dependencies
-bun install
-
-# Run development server
-bun dev
-
-# Run tests
-bun test
-
-# Run Storybook
-bun storybook
-```
-
-## Architecture (FSD)
-
-이 프로젝트는 [Feature-Sliced Design](https://feature-sliced.design/) 아키텍처를 따릅니다.
+This project follows the [Feature-Sliced Design](https://feature-sliced.design/) architecture:
 
 ```
 src/
-├── app/          # Next.js App Router + 전역 설정
-├── pages/        # 페이지 컴포넌트 (FSD layer)
-├── widgets/      # 독립적인 UI 블록
-├── features/     # 사용자 액션 단위 기능
-├── entities/     # 비즈니스 엔티티
-└── shared/       # 공용 유틸, UI, API
+├── app/          # Next.js App Router, global styles, providers
+├── pages/        # Compositional layer for page components
+├── widgets/      # Large self-contained UI blocks
+├── features/     # User interactions and business logic
+├── entities/     # Business entities (models, types, API)
+└── shared/       # Reusable utilities, UI components, configs
+    ├── api/      # API client, React Query setup, WebSocket
+    ├── config/   # Environment variables, test setup
+    ├── lib/      # Hooks, utility functions
+    ├── types/    # Common TypeScript types
+    └── ui/       # Base UI components (Button, etc.)
 ```
 
-### Layer Dependencies
+## Getting Started
 
-```
-app → pages → widgets → features → entities → shared
-```
+### Prerequisites
 
-**규칙**: 상위 레이어는 하위 레이어만 import 가능
+- Node.js 20+
+- Bun
 
-### Layer 설명
+### Installation
 
-| Layer      | 역할                             | 예시                       |
-| ---------- | -------------------------------- | -------------------------- |
-| `app`      | 앱 전역 설정, 라우팅, 프로바이더 | `providers/`, `layout.tsx` |
-| `pages`    | 라우트와 매칭되는 페이지         | `auth/`, `flow-chart/`     |
-| `widgets`  | features/entities 조합 UI 블록   | `header/`, `flow-canvas/`  |
-| `features` | 사용자 액션                      | `login/`, `create-node/`   |
-| `entities` | 비즈니스 도메인 객체             | `user/`, `node/`, `memo/`  |
-| `shared`   | 공용 코드                        | `ui/`, `api/`, `lib/`      |
+```bash
+# Clone the repository
+git clone <repository-url>
+cd boilerplate_nextjs16
 
-### Slice 내부 구조
+# Install dependencies
+bun install
 
-```
-feature-name/
-├── ui/           # 컴포넌트
-├── model/        # 비즈니스 로직, 훅, 상태
-├── api/          # API 호출
-└── index.ts      # Public API
+# Start development server with Turbopack
+bun dev
 ```
 
-## Scripts
+### Environment Variables
 
-| Script              | Description          |
-| ------------------- | -------------------- |
-| `bun dev`           | 개발 서버 실행       |
-| `bun build`         | 프로덕션 빌드        |
-| `bun test`          | 테스트 실행          |
-| `bun test:ui`       | Vitest UI 실행       |
-| `bun test:coverage` | 커버리지 리포트      |
-| `bun storybook`     | 스토리북 실행        |
-| `bun lint`          | ESLint 검사          |
-| `bun format`        | Prettier 포맷팅      |
-| `bun typecheck`     | TypeScript 타입 검사 |
+Create a `.env.local` file in the project root:
 
-## Path Aliases
+```env
+NEXT_PUBLIC_API_URL=http://localhost:8080
+NEXT_PUBLIC_WS_URL=ws://localhost:8080/ws
+```
+
+## Available Scripts
+
+| Command | Description |
+|---------|-------------|
+| `bun dev` | Start dev server with Turbopack |
+| `bun run build` | Create production build |
+| `bun start` | Start production server |
+| `bun lint` | Run ESLint |
+| `bun lint:fix` | Run ESLint with auto-fix |
+| `bun format` | Format code with Prettier |
+| `bun format:check` | Check code formatting |
+| `bun test` | Run tests with Vitest |
+| `bun test:ui` | Run tests with UI |
+| `bun test:coverage` | Run tests with coverage |
+| `bun storybook` | Start Storybook dev server |
+| `bun build-storybook` | Build Storybook for deployment |
+| `bun typecheck` | Run TypeScript type checking |
+
+## Key Features
+
+### Type-Safe API Client
+
+A lightweight, type-safe HTTP client with automatic error handling:
 
 ```typescript
-import { Button } from "@shared/ui";
-import { useLogin } from "@features/auth";
-import { UserAvatar } from "@entities/user";
+import { api } from '@shared/api';
+
+// GET request
+const users = await api.get<User[]>('/users');
+
+// POST request
+const newUser = await api.post<User>('/users', { name: 'John' });
 ```
 
-| Alias         | Path             |
-| ------------- | ---------------- |
-| `@/*`         | `src/*`          |
-| `@app/*`      | `src/app/*`      |
-| `@pages/*`    | `src/pages/*`    |
-| `@widgets/*`  | `src/widgets/*`  |
-| `@features/*` | `src/features/*` |
-| `@entities/*` | `src/entities/*` |
-| `@shared/*`   | `src/shared/*`   |
+### Zod Form Integration
 
-## ESLint Rules
+Seamless form validation with React Hook Form and Zod:
 
-FSD 레이어 의존성 규칙이 ESLint로 강제됩니다:
+```typescript
+import { useZodForm } from '@shared/lib/hooks';
+import { z } from 'zod';
 
-- `shared`는 다른 레이어를 import할 수 없음
-- `entities`는 `features` 이상 import 불가
-- `features`는 `widgets` 이상 import 불가
-- `widgets`는 `pages` import 불가
+const schema = z.object({
+  email: z.string().email(),
+  password: z.string().min(8),
+});
 
-위반 시 ESLint 에러 발생.
+function LoginForm() {
+  const form = useZodForm(schema);
+  // ...
+}
+```
+
+### Reusable UI Components
+
+Accessible, customizable components built with Radix UI and CVA:
+
+```tsx
+import { Button } from '@shared/ui';
+
+<Button variant="primary" size="lg">
+  Click me
+</Button>
+```
+
+### Path Aliases
+
+Clean imports using TypeScript path aliases:
+
+```typescript
+import { Button } from '@shared/ui';
+import { useZodForm } from '@shared/lib/hooks';
+import { api } from '@shared/api';
+```
+
+## Development
+
+### Adding a New Feature
+
+1. Create a new folder in `src/features/`
+2. Add `index.ts` for public exports
+3. Organize code into `ui/`, `model/`, `api/` subdirectories as needed
+
+### Adding a New Entity
+
+1. Create a new folder in `src/entities/`
+2. Define types in `model/types.ts`
+3. Add API queries in `api/queries.ts`
+4. Export public API through `index.ts`
+
+### Component Development
+
+1. Create component in appropriate layer
+2. Add Storybook stories for documentation
+3. Write tests with Testing Library
+4. Export through layer's index file
+
+## License
+
+MIT License - see the [LICENSE](LICENSE) file for details.
